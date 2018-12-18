@@ -15,7 +15,6 @@ matrix:
           - tools
           - build-tools-26.0.2
 before_install:
-- node --version
 - if [[ "$PLATFORM" =~ android ]]; then gradle --version; fi
 - if [[ "$PLATFORM" =~ ios ]]; then sudo gem install cocoapods; npm install -g ios-sim ios-deploy; fi
 - if [[ "$PLATFORM" =~ android ]]; then echo y | android update sdk -u --filter android-22,android-23,android-24,android-25,android-26,android-27;
