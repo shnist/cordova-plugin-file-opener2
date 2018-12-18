@@ -4,41 +4,12 @@ env:
   - TRAVIS_NODE_VERSION="10.14"
 matrix:
   include:
-  - env: PLATFORM=ios-9.3
+  - env: PLATFORM=ios
     os: osx
     osx_image: xcode7.3
     language: node_js
     node_js: '10.14'
-  - env: PLATFORM=ios-10.0
-    os: osx
-    osx_image: xcode7.3
-    language: node_js
-    node_js: '10.14'
-  - env: PLATFORM=android-4.4
-    os: linux
-    language: android
-    jdk: oraclejdk8
-    android:
-      components:
-      - tools
-      - build-tools-26.0.2
-  - env: PLATFORM=android-5.1
-    os: linux
-    language: android
-    jdk: oraclejdk8
-    android:
-      components:
-      - tools
-      - build-tools-26.0.2
-  - env: PLATFORM=android-6.0
-    os: linux
-    language: android
-    jdk: oraclejdk8
-    android:
-      components:
-      - tools
-      - build-tools-26.0.2
-  - env: PLATFORM=android-7.0
+  - env: PLATFORM=android
     os: linux
     language: android
     jdk: oraclejdk8
