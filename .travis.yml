@@ -1,25 +1,28 @@
 sudo: false
 matrix:
   include:
-    - os: osx
-      language: objective-c
-    - os: linux
-      jdk: oraclejdk1.8
+    - env: PLATFORM=ios
+      os: osx
+      osx_image: xcode7.3
+      language: node_js
+      node_js: "8.12"
+    - env: PLATFORM=android
+      os: linux
       language: android
-android:
-  components:
-    - tools
-    - platform-tools
-    - tools
-    - build-tools-25.0.2
-    - android-25
-    - sys-img-armeabi-v7a-android-N
-  licenses:
-    - 'android-sdk-preview-license-.+'
-    - 'android-sdk-license-.+'
-    - 'google-gdk-license-.+'
+      jdk: oraclejdk8
+      android:
+        components:
+          - tools
+          - build-tools-26.0.2
+before_install:
+- node --version
+- if [[ "$PLATFORM" =~ android ]]; then gradle --version; fi
+- if [[ "$PLATFORM" =~ ios ]]; then sudo gem install cocoapods; npm install -g ios-sim ios-deploy; fi
+- if [[ "$PLATFORM" =~ android ]]; then echo y | android update sdk -u --filter android-22,android-23,android-24,android-25,android-26,android-27;
+  fi
+- npm install -g cordova
 script:
   - nvm install 8.12.0
   - nvm use 8.12.0
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then rvm use system; fi
+  - if [[ "$PLATFORM" == "ios" ]]; then rvm use system; fi
   - /bin/bash tests/travis.sh
