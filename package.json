@@ -15,11 +15,6 @@
     "type": "git",
     "url": "https://github.com/pwlin/cordova-plugin-file-opener2.git"
   },
-  "scripts": {
-    "eslint": "node node_modules/eslint/bin/eslint www && node node_modules/eslint/bin/eslint src && node node_modules/eslint/bin/eslint tests",
-    "test:android": "cordova-paramedic --cleanUpAfterRun --verbose --platform android --plugin .",
-    "test:ios": "cordova-paramedic --cleanUpAfterRun --verbose --platform ios --plugin ."
-  },
   "keywords": [
     "ecosystem:cordova",
     "cordova-android",
@@ -37,14 +32,5 @@
   "bugs": {
     "url": "https://github.com/pwlin/cordova-plugin-file-opener2/issues"
   },
-  "homepage": "https://github.com/pwlin/cordova-plugin-file-opener2#readme",
-  "devDependencies": {
-    "eslint": "^5.10.0",
-    "eslint-config-semistandard": "^13.0.0",
-    "eslint-config-standard": "^12.0.0",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-node": "^8.0.0",
-    "eslint-plugin-promise": "^4.0.1",
-    "eslint-plugin-standard": "^4.0.0"
-  }
+  "homepage": "https://github.com/pwlin/cordova-plugin-file-opener2#readme"
 }

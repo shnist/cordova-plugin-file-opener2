@@ -19,7 +19,7 @@ android:
     - 'android-sdk-license-.+'
     - 'google-gdk-license-.+'
 script:
-  - nvm install 6.10.2
-  - nvm use 6.10.2
+  - nvm install 8.12.0
+  - nvm use 8.12.0
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then rvm use system; fi
   - /bin/bash tests/travis.sh
