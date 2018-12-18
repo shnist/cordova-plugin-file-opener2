@@ -13,7 +13,15 @@ matrix:
       android:
         components:
           - tools
+          - platform-tools
+          - tools
           - build-tools-26.0.2
+          - android-26
+          - sys-img-armeabi-v7a-android-N
+        licenses:
+          - 'android-sdk-preview-license-.+'
+          - 'android-sdk-license-.+'
+          - 'google-gdk-license-.+'
 before_install:
 - nvm install 8.12.0
 - nvm use 8.12.0
