@@ -1,37 +1,25 @@
 sudo: false
-env:
-  global:
-  - TRAVIS_NODE_VERSION="10.14"
 matrix:
   include:
-  - env: PLATFORM=ios
-    os: osx
-    osx_image: xcode7.3
-    language: node_js
-    node_js: '10.14'
-  - env: PLATFORM=android
-    os: linux
-    language: android
-    jdk: oraclejdk8
-    android:
-      components:
-      - tools
-      - build-tools-26.0.2
-before_install:
-- rm -rf ~/.nvm && git clone https://github.com/creationix/nvm.git ~/.nvm && (cd ~/.nvm
-  && git checkout `git describe --abbrev=0 --tags`) && source ~/.nvm/nvm.sh && nvm
-  install $TRAVIS_NODE_VERSION
-- node --version
-- if [[ "$PLATFORM" =~ android ]]; then gradle --version; fi
-- if [[ "$PLATFORM" =~ ios ]]; then npm install -g ios-deploy; fi
-- if [[ "$PLATFORM" =~ android ]]; then echo y | android update sdk -u --filter android-22,android-23,android-24,android-25,android-26,android-27;
-  fi
-- git clone https://github.com/apache/cordova-paramedic /tmp/paramedic && pushd /tmp/paramedic
-  && npm install && popd
-- npm install -g cordova
-install:
-- npm install
+    - os: osx
+      language: objective-c
+    - os: linux
+      jdk: oraclejdk1.8
+      language: android
+android:
+  components:
+    - tools
+    - platform-tools
+    - tools
+    - build-tools-25.0.2
+    - android-25
+    - sys-img-armeabi-v7a-android-N
+  licenses:
+    - 'android-sdk-preview-license-.+'
+    - 'android-sdk-license-.+'
+    - 'google-gdk-license-.+'
 script:
-- npm test
-- node /tmp/paramedic/main.js --platform $PLATFORM --plugin $(pwd)
-  --buildName travis-cordova-plugin-file-opener2-$TRAVIS_JOB_NUMBER
+  - nvm install 6.10.2
+  - nvm use 6.10.2
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then rvm use system; fi
+  - /bin/bash tests/travis.sh
